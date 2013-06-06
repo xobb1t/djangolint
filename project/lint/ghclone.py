@@ -40,12 +40,12 @@ def clone(url, hash=None):
 
 
 def _check_language(repo):
-    if not 'Python' in repo.get_languages():
+    if repo.language != 'Python':
         raise CloneError("Repo language hasn't Python code")
 
 
 def _get_tarball_url(repo, hash):
-    return 'https://github.com/%s/%s/tarball/%s' % (
+    return 'https://github.com/%s/%s/archive/%s.tar.gz' % (
         repo.owner.login, repo.name, hash or repo.master_branch
     )
 
